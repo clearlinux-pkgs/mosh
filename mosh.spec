@@ -4,7 +4,7 @@
 #
 Name     : mosh
 Version  : 1.2.5
-Release  : 2
+Release  : 3
 URL      : https://mosh.mit.edu/mosh-1.2.5.tar.gz
 Source0  : https://mosh.mit.edu/mosh-1.2.5.tar.gz
 Summary  : No detailed summary available
