@@ -1,0 +1,9 @@
+Configure miss: library containing utempter_remove_record
+Configure miss: pledge
+Configure miss: CommonCrypto/CommonCrypto.h usability
+Configure miss: CommonCrypto/CommonCrypto.h presence
+Configure miss: CommonCrypto/CommonCrypto.h
+Configure miss: whether forkpty is declared
+Configure miss: whether mach_absolute_time is declared
+Configure miss: whether betoh64 is declared
+Configure miss: whether bswap64 is declared
