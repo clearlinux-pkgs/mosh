@@ -4,14 +4,15 @@
 #
 Name     : mosh
 Version  : 1.3.2
-Release  : 23
+Release  : 24
 URL      : https://mosh.mit.edu/mosh-1.3.2.tar.gz
 Source0  : https://mosh.mit.edu/mosh-1.3.2.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
-Requires: mosh-bin
-Requires: mosh-doc
+Requires: mosh-bin = %{version}-%{release}
+Requires: mosh-license = %{version}-%{release}
+Requires: mosh-man = %{version}-%{release}
 BuildRequires : pkgconfig(bash-completion)
 BuildRequires : pkgconfig(nettle)
 BuildRequires : pkgconfig(openssl)
@@ -26,17 +27,27 @@ BuildRequires : zlib-dev
 %package bin
 Summary: bin components for the mosh package.
 Group: Binaries
+Requires: mosh-license = %{version}-%{release}
+Requires: mosh-man = %{version}-%{release}
 
 %description bin
 bin components for the mosh package.
 
 
-%package doc
-Summary: doc components for the mosh package.
-Group: Documentation
+%package license
+Summary: license components for the mosh package.
+Group: Default
 
-%description doc
-doc components for the mosh package.
+%description license
+license components for the mosh package.
+
+
+%package man
+Summary: man components for the mosh package.
+Group: Default
+
+%description man
+man components for the mosh package.
 
 
 %prep
@@ -47,9 +58,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1501111302
+export SOURCE_DATE_EPOCH=1542405010
 %configure --disable-static
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -59,8 +70,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1501111302
+export SOURCE_DATE_EPOCH=1542405010
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/mosh
+cp COPYING %{buildroot}/usr/share/package-licenses/mosh/COPYING
+cp COPYING.iOS %{buildroot}/usr/share/package-licenses/mosh/COPYING.iOS
 %make_install
 
 %files
@@ -72,6 +86,13 @@ rm -rf %{buildroot}
 /usr/bin/mosh-client
 /usr/bin/mosh-server
 
-%files doc
-%defattr(-,root,root,-)
-%doc /usr/share/man/man1/*
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mosh/COPYING
+/usr/share/package-licenses/mosh/COPYING.iOS
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/man1/mosh-client.1
+/usr/share/man/man1/mosh-server.1
+/usr/share/man/man1/mosh.1
