@@ -4,7 +4,7 @@
 #
 Name     : mosh
 Version  : 1.3.2
-Release  : 27
+Release  : 28
 URL      : https://mosh.mit.edu/mosh-1.3.2.tar.gz
 Source0  : https://mosh.mit.edu/mosh-1.3.2.tar.gz
 Summary  : No detailed summary available
@@ -28,7 +28,6 @@ BuildRequires : zlib-dev
 Summary: bin components for the mosh package.
 Group: Binaries
 Requires: mosh-license = %{version}-%{release}
-Requires: mosh-man = %{version}-%{release}
 
 %description bin
 bin components for the mosh package.
@@ -52,29 +51,38 @@ man components for the mosh package.
 
 %prep
 %setup -q -n mosh-1.3.2
+cd %{_builddir}/mosh-1.3.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1542405010
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1582862898
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1542405010
+export SOURCE_DATE_EPOCH=1582862898
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mosh
-cp COPYING %{buildroot}/usr/share/package-licenses/mosh/COPYING
-cp COPYING.iOS %{buildroot}/usr/share/package-licenses/mosh/COPYING.iOS
+cp %{_builddir}/mosh-1.3.2/COPYING %{buildroot}/usr/share/package-licenses/mosh/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/mosh-1.3.2/COPYING.iOS %{buildroot}/usr/share/package-licenses/mosh/23bf40f764b6aabac3b6492b6e1306d46190b2d5
 %make_install
 
 %files
@@ -88,8 +96,8 @@ cp COPYING.iOS %{buildroot}/usr/share/package-licenses/mosh/COPYING.iOS
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/mosh/COPYING
-/usr/share/package-licenses/mosh/COPYING.iOS
+/usr/share/package-licenses/mosh/23bf40f764b6aabac3b6492b6e1306d46190b2d5
+/usr/share/package-licenses/mosh/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 
 %files man
 %defattr(0644,root,root,0755)
