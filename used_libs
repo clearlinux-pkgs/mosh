@@ -1,9 +1,8 @@
 libc.so.6
-libcrypto.so.1.1
+libcrypto.so.3
 libgcc_s.so.1
 libm.so.6
-libprotobuf.so.22
+libprotobuf.so.32
 libstdc++.so.6
 libtinfo.so.6
-libutil.so.1
 libz.so.1

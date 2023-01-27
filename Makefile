@@ -1,5 +1,5 @@
 PKG_NAME := mosh
-URL = https://mosh.mit.edu/mosh-1.3.2.tar.gz
+URL = https://github.com/mobile-shell/mosh/releases/download/mosh-1.4.0/mosh-1.4.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
