@@ -1,10 +1,20 @@
 Configure miss: C/C++ restrict keyword
+Configure miss: C/C++ restrict keyword
 Configure miss: CommonCrypto/CommonCrypto.h
-Configure miss: g++ -std=gnu++11 options needed to detect all undeclared functions
+Configure miss: CommonCrypto/CommonCrypto.h
+Configure miss: g++ -std=gnu++17 options needed to detect all undeclared functions
+Configure miss: g++ -std=gnu++17 options needed to detect all undeclared functions
+Configure miss: g++ option to enable C++11 features
 Configure miss: g++ option to enable C++11 features
 Configure miss: pledge
+Configure miss: pledge
+Configure miss: utempter_remove_record in -lutempter
 Configure miss: utempter_remove_record in -lutempter
 Configure miss: whether betoh64 is declared
+Configure miss: whether betoh64 is declared
+Configure miss: whether bswap64 is declared
 Configure miss: whether bswap64 is declared
 Configure miss: whether forkpty is declared
+Configure miss: whether forkpty is declared
+Configure miss: whether mach_absolute_time is declared
 Configure miss: whether mach_absolute_time is declared
