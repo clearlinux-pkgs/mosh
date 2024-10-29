@@ -7,7 +7,7 @@
 #
 Name     : mosh
 Version  : 1.4.0
-Release  : 41
+Release  : 42
 URL      : https://github.com/mobile-shell/mosh/releases/download/mosh-1.4.0/mosh-1.4.0.tar.gz
 Source0  : https://github.com/mobile-shell/mosh/releases/download/mosh-1.4.0/mosh-1.4.0.tar.gz
 Summary  : No detailed summary available
